@@ -3,7 +3,7 @@ package models
 import "time"
 
 type User struct {
-	Id        int       `json:"id" bson:"id"`
+	Id        int64     `json:"id" bson:"id"`
 	Name      string    `json:"name" bson:"name"`
 	Mobile    string    `json:"mobile" bson:"mobile"`
 	Latitude  float64   `json:"latitude" bson:"latitude"`
@@ -12,12 +12,12 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at" bson:"updated_at"`
 }
 type Product struct {
-	ProductID               int       `json:"product_id"`
-	ProductName             string    `json:"product_name"`
-	ProductDescription      string    `json:"product_description"`
-	ProductImages           []string  `json:"product_images"`
-	ProductPrice            int       `json:"product_price"`
-	CompressedProductImages []string  `json:"compressed_product_images"`
-	CreatedAt               time.Time `json:"created_at"`
-	UpdatedAt               time.Time `json:"updated_at"`
+	ProductID               int64     `json:"product_id" bson:"product_id"`
+	ProductName             string    `json:"product_name" validate:"required" bson:"product_name"`
+	ProductDescription      string    `json:"product_description" bson:"product_description" validate:"required"`
+	ProductImages           []string  `json:"product_images" bson:"product_images" validate:"required"`
+	ProductPrice            int       `json:"product_price" bson:"product_price" validate:"required"`
+	CompressedProductImages []string  `json:"compressed_product_images" bson:"compressed_product_images"`
+	Created_At              time.Time `json:"created_at" bson:"created_at"`
+	Updated_At              time.Time `json:"updated_at" bson:"updated_at"`
 }
